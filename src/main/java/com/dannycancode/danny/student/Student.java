@@ -7,15 +7,11 @@ import java.time.Period;
 @Entity
 @Table
 public class Student {
-  @Id
-  @SequenceGenerator(
-          name = "student_sequence",
-          sequenceName = "student_sequence",
-          allocationSize = 1
-  )
-  @GeneratedValue(
-          strategy = GenerationType.SEQUENCE
-  )
+    // TODO 可以用看看 lombok 套件
+    // TODO 可以研究看看JPA的關聯用法 OneToOne OneToMany ManyToOne ManyToMany
+    @Id
+    @SequenceGenerator(name = "student_sequence", sequenceName = "student_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String name;
     private String email;
@@ -29,20 +25,19 @@ public class Student {
     }
 
     public Student(Long id,
-                   String name,
-                   String email,
-                   LocalDate dob) {
+            String name,
+            String email,
+            LocalDate dob) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.dob = dob;
 
-
     }
 
     public Student(String name,
-                   String email,
-                   LocalDate dob) {
+            String email,
+            LocalDate dob) {
         this.name = name;
         this.email = email;
         this.dob = dob;
