@@ -16,35 +16,38 @@ import java.util.Optional;
 @Service
 public class StudentService {
 
+  // TODO 可以改成註解這樣
   private final StudentRepository studentRepository;
 
+  // @Autowired
+  // private StudentRepository studentRepository;
+  // ==================================================
 
   @Autowired
   public StudentService(StudentRepository studentRepository) {
     this.studentRepository = studentRepository;
   }
 
-  public List<Student> getStudents(){
+  public List<Student> getStudents() {
     return studentRepository.findAll();
 
   }
 
   public void addNewStudent(Student student) {
-    Optional<Student> studentOptional = studentRepository.
-            findStudentByEmail(student.getEmail());
-    if(studentOptional.isPresent()){
+    Optional<Student> studentOptional = studentRepository.findStudentByEmail(student.getEmail());
+    if (studentOptional.isPresent()) {
       throw new IllegalStateException("email taken");
     }
-//    System.out.println(student);
+    // System.out.println(student);
     studentRepository.save(student);
 
   }
 
   public void deleteStudent(Long studentId) {
     boolean exists = studentRepository.existsById(studentId);
-    if (!exists){
+    if (!exists) {
       throw new IllegalStateException(
-              "student with id " + studentId + " does not exists");
+          "student with id " + studentId + " does not exists");
 
     }
     studentRepository.deleteById(studentId);
@@ -53,9 +56,9 @@ public class StudentService {
   @Transactional
   public void updateStudent(Long studentId, String name, String email) {
     Student student = studentRepository.findById(studentId)
-            .orElseThrow(() -> new IllegalStateException(
-                    "student with Id " + studentId + " does not exist"
-            ));
+        .orElseThrow(() -> new IllegalStateException(
+            "student with Id " + studentId + " does not exist"));
+    // TODO 物件裡面的default都是null
     if (name != null && name.length() > 0 && !Objects.equals(student.getName(), name)) {
       student.setName(name);
     }
