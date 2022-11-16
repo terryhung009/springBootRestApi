@@ -1,4 +1,4 @@
-# java-springboot-crud-api
+# java-springboot-rest-api
 
 Spring Boot Tutorial | Full Course [2022] [NEW]
 from
