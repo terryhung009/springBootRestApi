@@ -1,4 +1,4 @@
-package com.dannycancode.danny.student;
+package com.dannycancode.danny.entity;
 
 import javax.persistence.*;
 import java.time.LocalDate;

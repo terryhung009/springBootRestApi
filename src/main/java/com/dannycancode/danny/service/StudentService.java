@@ -1,14 +1,11 @@
-package com.dannycancode.danny.student;
+package com.dannycancode.danny.service;
 
+import com.dannycancode.danny.dao.StudentRepository;
+import com.dannycancode.danny.entity.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.transaction.Transactional;
-import java.time.LocalDate;
-import java.time.Month;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
